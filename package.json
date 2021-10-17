@@ -1,0 +1,25 @@
+{
+	"name": "phonebook",
+	"version": "1.0.0",
+	"description": "a mern-app where users can store their contacts",
+	"main": "server.js",
+	"scripts": {
+		"start": "node server.js",
+		"server": "nodemon server.js"
+	},
+	"keywords": [],
+	"author": "kunal",
+	"license": "ISC",
+	"dependencies": {
+		"bcrypt": "^5.0.1",
+		"config": "^3.3.6",
+		"express": "^4.17.1",
+		"express-validator": "^6.13.0",
+		"jsonwebtoken": "^8.5.1",
+		"mongoose": "^6.0.11"
+	},
+	"devDependencies": {
+		"concurrently": "^6.3.0",
+		"nodemon": "^2.0.13"
+	}
+}

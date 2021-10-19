@@ -1,9 +1,13 @@
 const express = require('express')
+const connectToDB = require('./config/db')
 const userRoutes = require('./routes/userRoutes')
 const authRoutes = require('./routes/authRoutes')
 const contactRoutes = require('./routes/contactRoutes')
 
 const app = express() // initialise express-app
+
+// connect to DB
+connectToDB()
 
 const PORT = process.env.PORT || 5000
 

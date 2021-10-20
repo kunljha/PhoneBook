@@ -9,8 +9,9 @@ const app = express() // initialise express-app
 // connect to DB
 connectToDB()
 
-const PORT = process.env.PORT || 5000
+app.use(express.json({ extended: false }))
 
+const PORT = process.env.PORT || 5000
 app.listen(PORT, () => {
 	console.log(`Server listening for requests on port ${PORT}`)
 })

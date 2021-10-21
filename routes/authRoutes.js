@@ -4,11 +4,18 @@ const { validationResult, check } = require('express-validator')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const User = require('../models/User')
+const requireAuth = require('../middleware/authMiddleware')
 
 const router = express.Router()
 
-router.get('/', (req, res) => {
-	res.send('Get logged-in user')
+router.get('/', requireAuth, async (req, res) => {
+	try {
+		const user = await User.findById(req.user.id).select('-password')
+		res.json(user)
+	} catch (err) {
+		console.error(err.message)
+		res.status(500).send('Something went wrong!')
+	}
 })
 
 router.post(

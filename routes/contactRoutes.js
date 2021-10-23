@@ -5,6 +5,7 @@ const Contact = require('../models/Contact')
 
 const router = express.Router()
 
+// get all contacts of a user
 router.get('/', requireAuth, async (req, res) => {
 	try {
 		const contacts = await Contact.find({ user: req.user.id }).sort({
@@ -17,6 +18,7 @@ router.get('/', requireAuth, async (req, res) => {
 	}
 })
 
+// add a new contact
 router.post(
 	'/',
 	[
@@ -52,10 +54,42 @@ router.post(
 	}
 )
 
-router.put('/:id', (req, res) => {
-	res.send('Update a contact')
+// update a contact
+router.put('/:id', requireAuth, async (req, res) => {
+	const { name, email, phone, type } = req.body
+
+	const contactFields = {}
+	if (name) contactFields.name = name
+	if (email) contactFields.email = email
+	if (phone) contactFields.phone = phone
+	if (type) contactFields.type = type
+
+	try {
+		const contact = await Contact.findById(req.params.id)
+
+		if (!contact) {
+			return res.status(404).json({ msg: 'Contact does not exist!' })
+		}
+		// making sure user updates its own contact
+		if (contact.user.toString() !== req.user.id) {
+			return res.status(401).json({ msg: 'Unauthorized User!' })
+		}
+
+		const updatedContact = await Contact.findByIdAndUpdate(
+			req.params.id,
+			{
+				$set: contactFields,
+			},
+			{ new: true }
+		)
+		res.json(updatedContact)
+	} catch (err) {
+		console.error(err.message)
+		res.status(500).json({ msg: 'Something went wrong!' })
+	}
 })
 
+// delete a contact
 router.delete('/:id', (req, res) => {
 	res.send('Delete a contact')
 })

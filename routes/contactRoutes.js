@@ -90,8 +90,24 @@ router.put('/:id', requireAuth, async (req, res) => {
 })
 
 // delete a contact
-router.delete('/:id', (req, res) => {
-	res.send('Delete a contact')
+router.delete('/:id', requireAuth, async (req, res) => {
+	try {
+		const contact = await Contact.findById(req.params.id)
+
+		if (!contact) {
+			return res.status(404).json({ msg: 'Contact does not exist!' })
+		}
+		// making sure user deletes its own contact
+		if (contact.user.toString() !== req.user.id) {
+			return res.status(401).json({ msg: 'Unauthorized User!' })
+		}
+
+		await Contact.findByIdAndRemove(req.params.id)
+		res.json({ msg: 'Contact deleted' })
+	} catch (err) {
+		console.error(err)
+		res.status(500).json({ msg: 'Something went wrong!' })
+	}
 })
 
 module.exports = router

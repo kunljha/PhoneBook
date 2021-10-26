@@ -9,12 +9,12 @@ const app = express() // initialise express-app
 // connect to DB
 connectToDB()
 
-app.use(express.json({ extended: false }))
-
 const PORT = process.env.PORT || 5000
 app.listen(PORT, () => {
 	console.log(`Server listening for requests on port ${PORT}`)
 })
+
+app.use(express.json({ extended: false }))
 
 app.get('/', (req, res) => {
 	res.send('Hello from Express Server')

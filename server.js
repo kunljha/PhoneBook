@@ -14,7 +14,7 @@ app.listen(PORT, () => {
 	console.log(`Server listening for requests on port ${PORT}`)
 })
 
-app.use(express.json({ extended: false }))
+app.use(express.json({ extended: false })) // parses json data of request into javascript data
 
 app.get('/', (req, res) => {
 	res.send('Hello from Express Server')

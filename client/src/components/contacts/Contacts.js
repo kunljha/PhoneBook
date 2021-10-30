@@ -5,14 +5,14 @@ import ContactItem from './ContactItem'
 const Contacts = () => {
     const contactContext  = useContext(ContactContext)
     const { contacts }  = contactContext
-
-    return (
+ 
+    return ( 
         <Fragment>
             {contacts.map((contact) => (
                 <ContactItem key={contact.id} contact={contact} />
             ))}
-        </Fragment>
-    )
-}
-
+        </Fragment> 
+    ) 
+} 
+ 
 export default Contacts

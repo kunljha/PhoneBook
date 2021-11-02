@@ -3,11 +3,12 @@ import ContactContext from '../../context/contact/contactContext'
 
 const ContactForm = () => {
 	const contactContext = useContext(ContactContext) // initializing context
-	const { addContact, clearCurrent, current } = contactContext // destructuring
+	const { addContact, updateContact, clearCurrent, current } = contactContext // destructuring
 
 	useEffect(() => {
 		if (current) {
 			setContact({
+				id: current.id,
 				name: current.name,
 				email: current.email,
 				phone: current.phone,
@@ -41,13 +42,13 @@ const ContactForm = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		addContact(contact)
-		setContact({
-			name: '',
-			email: '',
-			phone: '',
-			type: 'personal',
-		})
+		if (!current) {
+			addContact(contact)
+		} else {
+			updateContact(contact)
+		}
+
+		clearCurrent()
 	}
 
 	const { name, email, phone, type } = contact // destructuring contact state

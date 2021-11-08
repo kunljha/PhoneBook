@@ -2,7 +2,7 @@ import React, { useReducer } from 'react'
 import axios from 'axios'
 import AuthContext from './authContext'
 import AuthReducer from './authReducer'
-import { REGISTER_SUCCESS, REGISTER_FAIL } from '../types'
+import { REGISTER_SUCCESS, REGISTER_FAIL, CLEAR_ERRORS } from '../types'
 
 const AuthState = (props) => {
 	const initialState = {
@@ -10,7 +10,7 @@ const AuthState = (props) => {
 		isAuthenticated: null,
 		loading: true,
 		user: null,
-		error: null,
+		errors: null,
 	}
 
 	const [state, dispatch] = useReducer(AuthReducer, initialState)
@@ -34,6 +34,13 @@ const AuthState = (props) => {
 		}
 	}
 
+	// clear error
+	const clearErrors = () => {
+		dispatch({
+			type: CLEAR_ERRORS,
+		})
+	}
+
 	return (
 		<AuthContext.Provider
 			value={{
@@ -41,8 +48,9 @@ const AuthState = (props) => {
 				isAuthenticated: state.isAuthenticated,
 				loading: state.loading,
 				user: state.user,
-				error: state.error,
+				errors: state.errors,
 				registerUser,
+				clearErrors,
 			}}
 		>
 			{props.children}

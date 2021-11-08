@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import AlertContext from '../../context/alert/alertContext'
 import AuthContext from '../../context/auth/authContext'
 
@@ -6,7 +6,15 @@ const Register = () => {
 	const alertContext = useContext(AlertContext)
 	const authContext = useContext(AuthContext)
 	const { setAlert } = alertContext
-	const { registerUser } = authContext
+	const { registerUser, clearErrors, errors } = authContext
+
+	useEffect(() => {
+		if (errors === 'User already exists with this email!') {
+			setAlert(errors, 'danger')
+			clearErrors()
+			// eslint-diable-next-line
+		}
+	}, [errors])
 
 	const [user, setUser] = useState({
 		name: '',

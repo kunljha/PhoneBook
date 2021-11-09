@@ -9,6 +9,8 @@ import {
 	CLEAR_ERRORS,
 	USER_LOADED,
 	AUTH_ERROR,
+	LOGIN_SUCCESS,
+	LOGIN_FAIL,
 } from '../types'
 
 const AuthState = (props) => {
@@ -62,6 +64,27 @@ const AuthState = (props) => {
 		}
 	}
 
+	// login user
+	const loginUser = async (formdata) => {
+		const config = {
+			headers: { 'Content-Type': 'application/json' },
+		}
+		try {
+			const res = await axios.post('/api/auth', formdata, config)
+			dispatch({
+				type: LOGIN_SUCCESS,
+				payload: res.data,
+			})
+
+			loadUser()
+		} catch (err) {
+			dispatch({
+				type: LOGIN_FAIL,
+				payload: err.response.data,
+			})
+		}
+	}
+
 	// clear error
 	const clearErrors = () => {
 		dispatch({
@@ -80,6 +103,7 @@ const AuthState = (props) => {
 				registerUser,
 				clearErrors,
 				loadUser,
+				loginUser,
 			}}
 		>
 			{props.children}

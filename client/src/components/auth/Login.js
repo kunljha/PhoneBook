@@ -1,6 +1,30 @@
-import React, { useState } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
+import AlertContext from '../../context/alert/alertContext'
+import AuthContext from '../../context/auth/authContext'
 
 const Login = () => {
+	const alertContext = useContext(AlertContext)
+	const authContext = useContext(AuthContext)
+	const { setAlert } = alertContext
+	const { loginUser, clearErrors, errors, isAuthenticated } = authContext
+
+	const history = useHistory()
+	useEffect(() => {
+		if (isAuthenticated) {
+			history.push('/') // redirect to home route
+		}
+
+		if (
+			errors === 'Email is not registered!' ||
+			errors === 'Password is wrong!'
+		) {
+			setAlert(errors, 'danger')
+			clearErrors()
+		}
+		// eslint-diable-next-line
+	}, [errors, isAuthenticated, history])
+
 	const [user, setUser] = useState({
 		email: '',
 		password: '',
@@ -15,7 +39,14 @@ const Login = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		console.log('Login Submit')
+		if (email === '' || password === '') {
+			setAlert('Please enter all fields!', 'danger')
+		} else {
+			loginUser({
+				email,
+				password,
+			})
+		}
 	}
 
 	const { email, password } = user

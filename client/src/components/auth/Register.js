@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import AlertContext from '../../context/alert/alertContext'
 import AuthContext from '../../context/auth/authContext'
 
@@ -6,15 +7,20 @@ const Register = () => {
 	const alertContext = useContext(AlertContext)
 	const authContext = useContext(AuthContext)
 	const { setAlert } = alertContext
-	const { registerUser, clearErrors, errors } = authContext
+	const { registerUser, clearErrors, errors, isAuthenticated } = authContext
 
+	const history = useHistory()
 	useEffect(() => {
+		if (isAuthenticated) {
+			history.push('/') // redirect to home route
+		}
+
 		if (errors === 'User already exists with this email!') {
 			setAlert(errors, 'danger')
 			clearErrors()
-			// eslint-diable-next-line
 		}
-	}, [errors])
+		// eslint-diable-next-line
+	}, [errors, isAuthenticated, history])
 
 	const [user, setUser] = useState({
 		name: '',

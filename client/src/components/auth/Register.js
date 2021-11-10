@@ -19,7 +19,6 @@ const Register = () => {
 			setAlert(errors, 'danger')
 			clearErrors()
 		}
-		// eslint-diable-next-line
 	}, [errors, isAuthenticated, history])
 
 	const [user, setUser] = useState({

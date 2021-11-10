@@ -11,6 +11,7 @@ import {
 	AUTH_ERROR,
 	LOGIN_SUCCESS,
 	LOGIN_FAIL,
+	LOGOUT,
 } from '../types'
 
 const AuthState = (props) => {
@@ -52,14 +53,14 @@ const AuthState = (props) => {
 			const res = await axios.post('/api/users', formdata, config)
 			dispatch({
 				type: REGISTER_SUCCESS,
-				payload: res.data,
+				payload: res.data.token,
 			})
 
 			loadUser()
 		} catch (err) {
 			dispatch({
 				type: REGISTER_FAIL,
-				payload: err.response.data,
+				payload: err.response.data.msg,
 			})
 		}
 	}
@@ -73,16 +74,23 @@ const AuthState = (props) => {
 			const res = await axios.post('/api/auth', formdata, config)
 			dispatch({
 				type: LOGIN_SUCCESS,
-				payload: res.data,
+				payload: res.data.token,
 			})
 
 			loadUser()
 		} catch (err) {
 			dispatch({
 				type: LOGIN_FAIL,
-				payload: err.response.data,
+				payload: err.response.data.msg,
 			})
 		}
+	}
+
+	// logout user
+	const logout = () => {
+		dispatch({
+			type: LOGOUT,
+		})
 	}
 
 	// clear error
@@ -104,6 +112,7 @@ const AuthState = (props) => {
 				clearErrors,
 				loadUser,
 				loginUser,
+				logout,
 			}}
 		>
 			{props.children}

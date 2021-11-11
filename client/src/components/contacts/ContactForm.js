@@ -31,6 +31,7 @@ const ContactForm = () => {
 		phone: '',
 		type: 'personal',
 	})
+	const { name, email, phone, type } = contact // destructuring contact state
 
 	// handlers
 	const handleChange = (e) => {
@@ -50,8 +51,6 @@ const ContactForm = () => {
 
 		clearCurrent()
 	}
-
-	const { name, email, phone, type } = contact // destructuring contact state
 
 	return (
 		<form onSubmit={handleSubmit}>

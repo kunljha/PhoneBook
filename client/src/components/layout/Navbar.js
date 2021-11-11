@@ -13,6 +13,7 @@ const Navbar = ({ title, icon }) => {
 			</h1>
 			{user ? (
 				<ul>
+					<li>{user.name}</li>
 					<li>
 						<a href='#!' onClick={() => logout()}>
 							<i className='fas fa-sign-out-alt' /> Logout

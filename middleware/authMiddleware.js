@@ -6,7 +6,7 @@ const requireAuth = (req, res, next) => {
 	const token = req.header('x-auth-token')
 
 	if (!token) {
-		return res.status(401).json({ msg: 'No token, Access is denied!' })
+		return res.status(401).json({ msg: 'No token, access is denied!' })
 	}
 	// verifyng token
 	jwt.verify(token, config.get('jwtSecret'), (err, decodedToken) => {

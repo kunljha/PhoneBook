@@ -10,13 +10,7 @@ const ContactForm = () => {
 
 	useEffect(() => {
 		if (current) {
-			setContact({
-				id: current.id,
-				name: current.name,
-				email: current.email,
-				phone: current.phone,
-				type: current.type,
-			})
+			setContact(current)
 		} else {
 			setContact({
 				name: '',

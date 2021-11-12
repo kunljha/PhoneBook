@@ -84,7 +84,7 @@ router.put('/:id', requireAuth, async (req, res) => {
 		)
 		res.json(updatedContact)
 	} catch (err) {
-		console.error(err.message)
+		console.error(err)
 		res.status(500).json({ msg: 'Something went wrong!' })
 	}
 })
@@ -105,7 +105,7 @@ router.delete('/:id', requireAuth, async (req, res) => {
 		await Contact.findByIdAndRemove(req.params.id)
 		res.json({ msg: 'Contact deleted' })
 	} catch (err) {
-		console.error(err)
+		console.error(err.message)
 		res.status(500).json({ msg: 'Something went wrong!' })
 	}
 })

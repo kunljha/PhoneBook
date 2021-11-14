@@ -36,10 +36,22 @@ const Register = () => {
 		})
 	}
 
+	// email validation using regex
+	const validateEmail = (input) => {
+		const regex =
+			/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+		if (!email || regex.test(email) === false) {
+			return false
+		}
+		return true
+	}
+
 	const handleSubmit = (e) => {
 		e.preventDefault()
 		if (name === '' || email === '' || password === '') {
 			setAlert('Please enter all fields!', 'danger')
+		} else if (!validateEmail(email)) {
+			setAlert('Please enter a valid email!', 'danger')
 		} else if (password.length < 6) {
 			setAlert('Minimum length of password should be six characters!', 'danger')
 		} else if (password !== password2) {

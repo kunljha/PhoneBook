@@ -5,7 +5,8 @@ import AlertContext from '../../context/alert/alertContext'
 const ContactForm = () => {
 	const contactContext = useContext(ContactContext)
 	const alertContext = useContext(AlertContext)
-	const { addContact, updateContact, clearCurrent, current } = contactContext
+	const { addContact, updateContact, clearCurrent, current, errors } =
+		contactContext
 	const { setAlert } = alertContext
 
 	useEffect(() => {
@@ -19,7 +20,7 @@ const ContactForm = () => {
 				type: 'personal',
 			})
 		}
-	}, [current])
+	}, [current, addContact])
 
 	// component-level state
 	const [contact, setContact] = useState({
@@ -38,18 +39,33 @@ const ContactForm = () => {
 		})
 	}
 
+	// email validation using regex
+	const validateEmail = () => {
+		const regex =
+			/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+		if (!email || regex.test(email) === false) {
+			return false
+		}
+		return true
+	}
+
 	const handleSubmit = (e) => {
 		e.preventDefault()
 		if (name === '' || email === '' || phone === '') {
 			setAlert('Please enter all fields!', 'danger')
-		}
-		if (!current) {
-			addContact(contact)
-		} else {
-			updateContact(contact)
+		} else if (!validateEmail(email)) {
+			setAlert('Please enter a valid email!', 'danger')
 		}
 
-		clearCurrent()
+		if (validateEmail(email)) {
+			if (!current) {
+				addContact(contact)
+			} else {
+				updateContact(contact)
+				setAlert('Contact Updated!', 'primary')
+			}
+			clearCurrent()
+		}
 	}
 
 	return (

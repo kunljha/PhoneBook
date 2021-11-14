@@ -1,6 +1,5 @@
-## PhoneBook
+## PhoneBook - [Live Demo](https://lit-cove-09524.herokuapp.com)
 
-This project is a full stack MERN app where users can register into the App and manage(create,read, edit and delete) their contacts. They can later come and login into the app and can see their saved contacts.  
-The frontend of the app will be built with React framework.  
-Currently I have only made the Backend API of the app with NodeJS and Express to handle requests and using MongoDB as database.  
-I also implemented authentication in app using JWT.
+This project is a Full Stack **MERN** app where users can register into the App and manage(create, read, update and delete) their contacts. They can later come back and login into the app and can see their saved contacts.  
+The frontend of this webapp is built with **React** and the backend server is built using the NodeJS framework **Express**.  
+I have used **MongoDB** as the Database and also implemented authentication using **JWT**.

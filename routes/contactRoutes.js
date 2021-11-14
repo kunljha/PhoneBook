@@ -48,7 +48,7 @@ router.post(
 			const contact = await newContact.save()
 			res.json(contact)
 		} catch (err) {
-			console.error(err.message)
+			console.error(err)
 			res.status(500).json({ msg: 'Something went wrong!' })
 		}
 	}

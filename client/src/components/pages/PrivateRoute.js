@@ -6,7 +6,7 @@ const PrivateRoute = () => {
   const authContext = useContext(AuthContext)
   const { isAuthenticated, loading } = authContext
 
-  return !isAuthenticated && !loading ? <Navigate to='/login' /> : <Outlet />
+  return !isAuthenticated && !loading ? <Navigate to='/about' /> : <Outlet />
 }
 
 export default PrivateRoute

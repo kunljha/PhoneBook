@@ -145,6 +145,23 @@ img {
 .m-3 {
   margin: 3rem;
 }
+
+.mx {
+  margin: 0 0.5rem;
+}
+
+.mx-1 {
+  margin: 0 1rem;
+}
+
+.mx-2 {
+  margin: 0 2rem;
+}
+
+.mx-3 {
+  margin: 0 3rem;
+}
+
 .my {
   margin: 0.5rem 0;
 }

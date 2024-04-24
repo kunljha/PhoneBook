@@ -1,23 +1,28 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const About = () => {
-	return (
-		<div>
-			<h2>About</h2>
-			<h4 className='my-1 lead'>
-				This is a Full Stack <span className='text-primary lead'>MERN</span> App
-			</h4>
-			<h4>
-				The Backend server is built with{' '}
-				<span className='text-primary lead'>Express</span> and the frontend is
-				built with <span className='text-primary lead'>React</span>.
-			</h4>
-			<h4>
-				I have implemented <span className='text-primary lead'>ContextAPI</span>{' '}
-				to manage App-level-state with useReducer hook and useContext hook.
-			</h4>
-		</div>
-	)
+  return (
+    <div className='container card bg-light'>
+      <h2 className='text-primary my'>About</h2>
+      <p className='py-1'>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi quae
+        tempore deleniti, incidunt vero cumque facilis velit esse sit sunt alias
+        nisi unde ipsam nulla, dolores suscipit. Commodi officia blanditiis
+        ipsum, non iusto doloribus minima inventore eveniet reiciendis deserunt
+        ex quaerat distinctio, iste neque incidunt. Officia, architecto?
+        Cupiditate debitis dicta harum ab nostrum suscipit veniam doloribus
+        necessitatibus, vero, nihil perspiciatis
+      </p>
+      {/* <button className='btn btn-danger btn-sm mx'>Take a test drive</button> */}
+      <Link to='/register' className='btn btn-success btn-sm mx'>
+        Register
+      </Link>
+      <Link to='/login' className='btn btn-dark btn-sm mx'>
+        Login
+      </Link>
+    </div>
+  )
 }
 
 export default About

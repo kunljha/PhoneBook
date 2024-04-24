@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import AlertContext from '../../context/alert/alertContext'
 import AuthContext from '../../context/auth/authContext'
 
@@ -107,6 +107,9 @@ const Register = () => {
           value='Register'
           className='btn btn-primary btn-block'
         />
+        <Link to='/login' className='btn btn-primary btn-block text-center'>
+          Already registered? Login
+        </Link>
       </form>
     </div>
   )

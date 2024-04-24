@@ -1,0 +1,122 @@
+[
+  {
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "type": "personal",
+    "phone": "123-456-7890"
+  },
+  {
+    "name": "Jane Smith",
+    "email": "jane.smith@example.com",
+    "type": "professional",
+    "phone": "234-567-8901"
+  },
+  {
+    "name": "Michael Johnson",
+    "email": "michael.johnson@example.com",
+    "type": "personal",
+    "phone": "345-678-9012"
+  },
+  {
+    "name": "Emily Davis",
+    "email": "emily.davis@example.com",
+    "type": "professional",
+    "phone": "456-789-0123"
+  },
+  {
+    "name": "David Wilson",
+    "email": "david.wilson@example.com",
+    "type": "personal",
+    "phone": "567-890-1234"
+  },
+  {
+    "name": "Jennifer Brown",
+    "email": "jennifer.brown@example.com",
+    "type": "professional",
+    "phone": "678-901-2345"
+  },
+  {
+    "name": "Christopher Lee",
+    "email": "christopher.lee@example.com",
+    "type": "personal",
+    "phone": "789-012-3456"
+  },
+  {
+    "name": "Amanda Martinez",
+    "email": "amanda.martinez@example.com",
+    "type": "professional",
+    "phone": "890-123-4567"
+  },
+  {
+    "name": "Daniel Rodriguez",
+    "email": "daniel.rodriguez@example.com",
+    "type": "personal",
+    "phone": "901-234-5678"
+  },
+  {
+    "name": "Jessica Taylor",
+    "email": "jessica.taylor@example.com",
+    "type": "professional",
+    "phone": "012-345-6789"
+  },
+  {
+    "name": "Matthew Garcia",
+    "email": "matthew.garcia@example.com",
+    "type": "personal",
+    "phone": "123-456-7890"
+  },
+  {
+    "name": "Ashley Hernandez",
+    "email": "ashley.hernandez@example.com",
+    "type": "professional",
+    "phone": "234-567-8901"
+  },
+  {
+    "name": "Andrew Martinez",
+    "email": "andrew.martinez@example.com",
+    "type": "personal",
+    "phone": "345-678-9012"
+  },
+  {
+    "name": "Brittany Perez",
+    "email": "brittany.perez@example.com",
+    "type": "professional",
+    "phone": "456-789-0123"
+  },
+  {
+    "name": "James Gonzalez",
+    "email": "james.gonzalez@example.com",
+    "type": "personal",
+    "phone": "567-890-1234"
+  },
+  {
+    "name": "Nicole Flores",
+    "email": "nicole.flores@example.com",
+    "type": "professional",
+    "phone": "678-901-2345"
+  },
+  {
+    "name": "Brandon Sanchez",
+    "email": "brandon.sanchez@example.com",
+    "type": "personal",
+    "phone": "789-012-3456"
+  },
+  {
+    "name": "Samantha Wright",
+    "email": "samantha.wright@example.com",
+    "type": "professional",
+    "phone": "890-123-4567"
+  },
+  {
+    "name": "Justin King",
+    "email": "justin.king@example.com",
+    "type": "personal",
+    "phone": "901-234-5678"
+  },
+  {
+    "name": "Stephanie Scott",
+    "email": "stephanie.scott@example.com",
+    "type": "professional",
+    "phone": "012-345-6789"
+  }
+]

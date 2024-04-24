@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import AlertContext from '../../context/alert/alertContext'
 import AuthContext from '../../context/auth/authContext'
 
@@ -91,6 +91,9 @@ const Login = () => {
           value='Login'
           className='btn btn-primary btn-block'
         />
+        <Link to='/register' className='btn btn-primary btn-block text-center'>
+          Not signed-up? Register
+        </Link>
       </form>
     </div>
   )
